@@ -48,7 +48,7 @@ const startGame = () => {
 
 const endGame = (isWin) => {
   if (isWin) {
-    winner.innerHTML = isX ? "X Venceu!" : "O Venceu!";
+    winner.innerHTML = isX ? '"X" Venceu!' : '"O" Venceu!';
   } else {
     winner.innerHTML = "Empate!";
   }
