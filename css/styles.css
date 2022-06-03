@@ -1,0 +1,142 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+body {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: linear-gradient(to right, #36928c, #09ada5);
+}
+
+.board {
+  height: 100%;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, auto);
+  justify-content: center;
+  align-items: center;
+  align-content: center;
+}
+
+.cell {
+  width: 100px;
+  height: 100px;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(2),
+.cell:nth-child(3) {
+  border-top: none;
+}
+
+.cell:nth-child(1),
+.cell:nth-child(4),
+.cell:nth-child(7) {
+  border-left: none;
+}
+
+.cell:nth-child(7),
+.cell:nth-child(8),
+.cell:nth-child(9) {
+  border-bottom: none;
+}
+
+.cell:nth-child(3),
+.cell:nth-child(6),
+.cell:nth-child(9) {
+  border-right: none;
+}
+
+.cell.x,
+.cell.o {
+  cursor: not-allowed;
+}
+
+.cell.x::before,
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+  content: "";
+  height: 10%;
+  width: 80%;
+  background-color: #dae637;
+  position: absolute;
+}
+
+.cell.x::before,
+.board.x .cell:not(.x):not(.o):hover::before {
+  transform: rotate(45deg);
+}
+
+.cell.x::after,
+.board.x .cell:not(.x):not(.o):hover::after {
+  transform: rotate(-45deg);
+}
+
+.cell.o::after,
+.board.o .cell:not(.x):not(.o):hover::after {
+  content: "";
+  height: 50%;
+  width: 50%;
+  border-radius: 50%;
+  border: 10px solid #201491;
+}
+
+.board.x .cell:not(.x):not(.o):hover::before,
+.board.x .cell:not(.x):not(.o):hover::after {
+  background-color: #ffffff4d;
+}
+
+.board.o .cell:not(.x):not(.o):hover::after {
+  border: 10px solid #ffffff4d;
+}
+
+.message {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: #000000cc;
+}
+
+.winner {
+  display: flex;
+}
+
+.message p {
+  color: white;
+  font-size: 4em;
+  margin-bottom: .5em;
+}
+
+.message button {
+  border: none;
+  padding: 20px 30px;
+  border-radius: 10px;
+  font-size: 1em;
+  color: white;
+  background-color: #09ada5;
+  transition: .4s;
+  cursor: pointer;
+}
+
+.message button:hover {
+  color: #09ada5;
+  background-color: white;
+}
